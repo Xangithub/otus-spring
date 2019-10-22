@@ -5,6 +5,6 @@ import ru.otus.lesson1.domain.Person;
 public class PersonDaoImpl implements PersonDaoI {
     @Override
     public Person getPeson() {
-        return new Person("Peter", 18);
+        return new Person("Peter", "Ivanov");
     }
 }

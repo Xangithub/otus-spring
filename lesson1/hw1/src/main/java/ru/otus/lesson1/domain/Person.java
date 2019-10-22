@@ -1,13 +1,11 @@
 package ru.otus.lesson1.domain;
 
-public class Person {
-    String name;
-    int age;
+import java.util.HashMap;
 
-    public Person(String name, int age) {
-        this.name = name;
-        this.age = age;
-    }
+public class Person {
+    private String name;
+    private String lastName;
+    private HashMap<Question,Integer> result;
 
     public String getName() {
         return name;
@@ -17,19 +15,35 @@ public class Person {
         this.name = name;
     }
 
-    public int getAge() {
-        return age;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setAge(int age) {
-        this.age = age;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public HashMap<Question, Integer> getResult() {
+        return result;
+    }
+
+    public void setResult(HashMap<Question, Integer> result) {
+        this.result = result;
     }
 
     @Override
     public String toString() {
         return "Person{" +
                 "name='" + name + '\'' +
-                ", age=" + age +
                 '}';
+    }
+
+    public Person(String name, String lastName) {
+        this.name = name;
+        this.lastName = lastName;
+    }
+
+    public Person() {
+
     }
 }
