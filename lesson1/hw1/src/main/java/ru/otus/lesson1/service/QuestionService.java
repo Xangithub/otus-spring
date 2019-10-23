@@ -48,7 +48,7 @@ public class QuestionService {
 
         QuestionAnalyzerInterface analyzerMethod = map -> {
             for (Question question : map.keySet()) {
-                if (question.getAnswer().equals("mam")) return true;
+                if (question.getId()==1 && map.get(question)==2) return true;
             }
             return false;
         };
