@@ -30,17 +30,14 @@ public class QuestionService {
     /***
      * Здесь загружаются вопросы из DAO согласно count
      * Можно было б отдать ссылку на очередь, но вопросов в базе может быть больше чем нужно для опроса.
-     * */
+     *
+     * @param questions*/
 
-    public void callProcess(){
+    public void callProcess(HashSet<Question> questions){
         boolean pass = false;
-        HashSet<Question> set = new HashSet<>();
-        for (int i = 0; i < count; i++) {
-           Question question = lineDao.getQuestion();
-           set.add(question);
-        }
+
         /*** Отдаём вопросы на обработку и получаем ответ */
-        Person person = responsable.getAnswers(set);
+        Person person = responsable.getAnswers(questions);
         String name = person.getName();
 
         /*** очень простая логика анализа ответов затем меняем на свою */
@@ -58,6 +55,14 @@ public class QuestionService {
         String out = new String (("Уважаемый(ая), " + name + ", Вы прошли тест").getBytes(),  StandardCharsets.UTF_8 );
         if (pass) System.out.println(out);
 
+    }
+    public HashSet<Question> getQuestions(){
+        HashSet<Question> set = new HashSet<>();
+        for (int i = 0; i < count; i++) {
+            Question question = lineDao.getQuestion();
+            set.add(question);
+        }
+        return set;
     }
 
     public Integer getCount() {

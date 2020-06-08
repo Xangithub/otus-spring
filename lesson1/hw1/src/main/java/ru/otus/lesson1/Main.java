@@ -1,7 +1,12 @@
 package ru.otus.lesson1;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import ru.otus.lesson1.domain.Question;
 import ru.otus.lesson1.service.QuestionService;
+
+import java.nio.charset.StandardCharsets;
+import java.util.HashSet;
+import java.util.Scanner;
 
 public class Main {
 
@@ -10,7 +15,10 @@ public class Main {
     public static void main(String[] args) {
 
         QuestionService questionServ = xmlApplicationContext.getBean("questionService", QuestionService.class);
-        questionServ.callProcess();
+
+
+        final HashSet<Question> questions = questionServ.getQuestions();
+        questionServ.callProcess(questions);
 
     }
 }

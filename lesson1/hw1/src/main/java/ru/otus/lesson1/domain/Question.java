@@ -13,6 +13,21 @@ public class Question {
         this.answer = answer;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Question question1 = (Question) o;
+
+        return question.equals(question1.question);
+    }
+
+    @Override
+    public int hashCode() {
+        return question.hashCode();
+    }
+
     public Question() {
     }
 

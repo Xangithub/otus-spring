@@ -20,20 +20,23 @@ public class View implements Responsable {
     @Override
     public Person getAnswers(HashSet<Question> set) {
         HashMap<Question, Integer> result = new HashMap<>();
-        String inpName = new String("Введите ваше имя".getBytes(), StandardCharsets.UTF_8);
-        String inpLastName = new String("Введите вашу фамилию".getBytes(), StandardCharsets.UTF_8);
-        System.out.println(inpName);
-        Scanner scanner = new Scanner(System.in);
-        boolean pass = false;
 
-        String name = scanner.nextLine();
+        boolean pass = false;
+        String inpName = "Input your name";
+        String inpLastName = "Input your last name";
+        System.out.println(inpName);
+        Scanner scanner = new Scanner(System.in).useDelimiter("\n");
+        String name = scanner.next();
+
+        String lastName = null;
         System.out.println(inpLastName);
-        String lastName = scanner.nextLine();
-        Person person = new Person(){{
-            setName(name);
-            setLastName(lastName);
-            setResult(result);
-        }};
+//        if (scanner.hasNext())
+            lastName = scanner.next();
+scanner.reset();
+        Person person = new Person();
+        person.setName(name);
+        person.setLastName(lastName);
+        person.setResult(result);
 
         for (Question question : set) {
             System.out.println(question.getQuestion());
@@ -45,6 +48,7 @@ public class View implements Responsable {
             Integer numAnsw = null;
             while (numAnsw == null) {
                 try {
+//                if (scanner.hasNextInt())
                     numAnsw = scanner.nextInt();
                 } catch (Exception e) {
                     e.printStackTrace();
