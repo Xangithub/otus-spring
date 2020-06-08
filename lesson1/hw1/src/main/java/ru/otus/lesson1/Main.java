@@ -9,6 +9,7 @@ import java.util.HashSet;
 import java.util.Scanner;
 
 public class Main {
+    public static boolean lang=true;
 
     static final ClassPathXmlApplicationContext xmlApplicationContext = new ClassPathXmlApplicationContext("config.xml");
 

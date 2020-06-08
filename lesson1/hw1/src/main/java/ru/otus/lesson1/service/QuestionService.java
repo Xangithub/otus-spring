@@ -1,5 +1,6 @@
 package ru.otus.lesson1.service;
 
+import ru.otus.lesson1.Main;
 import ru.otus.lesson1.dao.LineDao;
 import ru.otus.lesson1.domain.Person;
 import ru.otus.lesson1.domain.Question;
@@ -52,7 +53,7 @@ public class QuestionService {
 
         questionAnalyzer.analyze(result, analyzerMethod);
 
-        String out = new String (("Уважаемый(ая), " + name + ", Вы прошли тест").getBytes(),  StandardCharsets.UTF_8 );
+        String out = Main.lang ? "Test passed, " + name : new String (("Уважаемый(ая), " + name + ", Вы прошли тест").getBytes(),  StandardCharsets.UTF_8 );
         if (pass) System.out.println(out);
 
     }

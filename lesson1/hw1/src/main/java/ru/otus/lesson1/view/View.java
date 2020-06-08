@@ -1,5 +1,6 @@
 package ru.otus.lesson1.view;
 
+import ru.otus.lesson1.Main;
 import ru.otus.lesson1.domain.Person;
 import ru.otus.lesson1.domain.Question;
 
@@ -22,17 +23,19 @@ public class View implements Responsable {
         HashMap<Question, Integer> result = new HashMap<>();
 
         boolean pass = false;
-        String inpName = "Input your name";
-        String inpLastName = "Input your last name";
+      String inpName = Main.lang ? "Input your name" : new String("Введите ваше имя".getBytes(), StandardCharsets.UTF_8);
+      String inpLastName = Main.lang ? "Input your last name" : new String("Введите вашу фамилию".getBytes(), StandardCharsets.UTF_8);
+
         System.out.println(inpName);
-        Scanner scanner = new Scanner(System.in).useDelimiter("\n");
+//        final String property = System.getProperty("line.separator");
+//        System.out.println(property);
+        Scanner scanner = new Scanner(System.in);
+        //.useDelimiter("\n");
         String name = scanner.next();
 
-        String lastName = null;
         System.out.println(inpLastName);
-//        if (scanner.hasNext())
-            lastName = scanner.next();
-scanner.reset();
+        String lastName = scanner.next();
+        //scanner.reset();
         Person person = new Person();
         person.setName(name);
         person.setLastName(lastName);
