@@ -4,9 +4,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import ru.otus.lesson1.domain.Question;
 import ru.otus.lesson1.service.QuestionService;
 
-import java.nio.charset.StandardCharsets;
 import java.util.HashSet;
-import java.util.Scanner;
 
 public class Main {
     public static boolean lang=true;
