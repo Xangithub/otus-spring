@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:c="http://www.springframework.org/schema/c"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean name="questionService" class="ru.otus.lesson1.service.QuestionService" c:lineDao-ref="lineDao" c:responsable-ref="poll" c:questionAnalyzer-ref="questionAnalyzer" p:count="${count}"/>
+    <bean name="questionAnalyzer" class="ru.otus.lesson1.service.QuestionAnalyzer"/>
+
+    <bean name="poll" class="ru.otus.lesson1.view.View" c:count="${count}"/>
+
+    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer" p:location="classpath:lesson1.properties"/>
+
+    <bean name="lineDao" class="ru.otus.lesson1.dao.LineDao"  c:strFile="${file}"  c:mapper-ref="mapper"/>
+
+    <bean name="mapper" class="com.fasterxml.jackson.dataformat.csv.CsvMapper"/>
+</beans>
