@@ -1,10 +1,10 @@
-package ru.otus.lesson1.dao;
+package ru.otus.lesson2.dao;
 
 import com.fasterxml.jackson.databind.MappingIterator;
 import com.fasterxml.jackson.dataformat.csv.CsvMapper;
 import com.fasterxml.jackson.dataformat.csv.CsvParser;
 import com.fasterxml.jackson.dataformat.csv.CsvSchema;
-import ru.otus.lesson1.domain.Question;
+import ru.otus.lesson2.domain.Question;
 
 import java.io.File;
 import java.io.IOException;

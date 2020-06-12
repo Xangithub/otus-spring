@@ -1,10 +1,11 @@
-package ru.otus.lesson1.service;
+package ru.otus.lesson2.service;
 
-import ru.otus.lesson1.Main;
-import ru.otus.lesson1.dao.LineDao;
-import ru.otus.lesson1.domain.Person;
-import ru.otus.lesson1.domain.Question;
-import ru.otus.lesson1.view.Responsable;
+import org.springframework.lang.NonNull;
+import ru.otus.lesson2.Main;
+import ru.otus.lesson2.dao.LineDao;
+import ru.otus.lesson2.domain.Person;
+import ru.otus.lesson2.domain.Question;
+import ru.otus.lesson2.view.Responsable;
 
 import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
@@ -14,13 +15,14 @@ public class QuestionService {
     private LineDao lineDao;
     private Responsable responsable;
     private QuestionAnalyzer questionAnalyzer;
-
-    private Integer count;
+    private int count;
 
     public QuestionService(LineDao lineDao, Responsable responsable, QuestionAnalyzer questionAnalyzer) {
         this.lineDao = lineDao;
         this.responsable = responsable;
         this.questionAnalyzer = questionAnalyzer;
+        this.count=lineDao.getCount();
+
     }
 
     public void setCount(Integer count) throws Exception {

@@ -1,6 +1,6 @@
-package ru.otus.lesson1.dao;
+package ru.otus.lesson2.dao;
 
-import ru.otus.lesson1.domain.Person;
+import ru.otus.lesson2.domain.Person;
 
 public class PersonDaoImpl implements PersonDaoI {
     @Override

@@ -1,8 +1,8 @@
-package ru.otus.lesson1.view;
+package ru.otus.lesson2.view;
 
-import ru.otus.lesson1.Main;
-import ru.otus.lesson1.domain.Person;
-import ru.otus.lesson1.domain.Question;
+import ru.otus.lesson2.Main;
+import ru.otus.lesson2.domain.Person;
+import ru.otus.lesson2.domain.Question;
 
 import java.nio.charset.StandardCharsets;
 import java.util.HashMap;

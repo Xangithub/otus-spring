@@ -1,4 +1,4 @@
-package ru.otus.lesson1.domain;
+package ru.otus.lesson2.domain;
 
 import java.util.HashMap;
 

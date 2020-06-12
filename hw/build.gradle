@@ -21,6 +21,6 @@ dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
 }
 
-mainClassName = 'ru.otus.lesson1.Main'
+mainClassName = 'ru.otus.lesson2.Main'
 compileJava.options.encoding = "UTF-8"
 compileTestJava.options.encoding = "UTF-8"
