@@ -39,7 +39,7 @@ public class QuestionService {
     public void callProcess(HashSet<Question> questions){
         boolean pass = false;
 
-        /*** Отдаём вопросы на обработку и получаем ответ */
+        /*** Отдаём вопросы на обработку и получаем ответы тестируемого */
         Person person = responsable.getAnswers(questions);
         String name = person.getName();
 
@@ -53,10 +53,14 @@ public class QuestionService {
             return false;
         };
 
-        questionAnalyzer.analyze(result, analyzerMethod);
+        final boolean analyzeResult = questionAnalyzer.analyze(result, analyzerMethod);
 
         String out = Main.lang ? "Test passed, " + name : new String (("Уважаемый(ая), " + name + ", Вы прошли тест").getBytes(),  StandardCharsets.UTF_8 );
         if (pass) System.out.println(out);
+
+        String report = analyzeResult ? out : "Test failed";
+
+        System.out.println(report);
 
     }
     public HashSet<Question> getQuestions(){

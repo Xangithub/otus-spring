@@ -8,6 +8,9 @@ import ru.otus.lesson2.domain.Question;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 import java.util.*;
 
 public class LineDao {
@@ -18,12 +21,21 @@ public class LineDao {
 
     public LineDao(CsvMapper mapper, String strFile) {
         this.mapper = mapper;
-        this.csvFile = new File(ClassLoader.getSystemResource(strFile).getFile());
-
-        fillQuestionCache(mapper, csvFile);
+        final InputStream inputStream = getClass().getResourceAsStream(strFile);
+        try(
+            InputStreamReader inputStreamReader =
+                        new InputStreamReader(
+                inputStream,
+                StandardCharsets.UTF_8);
+        )
+        {
+            fillQuestionCache(mapper, inputStreamReader);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
-    private void fillQuestionCache(CsvMapper mapper, File csvFile) {
+    private void fillQuestionCache(CsvMapper mapper, InputStreamReader csvFile) {
         mapper.enable(CsvParser.Feature.WRAP_AS_ARRAY);
         CsvSchema schema = CsvSchema.builder()
                 .addColumn("id", CsvSchema.ColumnType.NUMBER)
@@ -73,7 +85,4 @@ public class LineDao {
         this.setSet(set);
         questions.addAll(set);
     }
-
-    public LineDao() {}
-
 }
