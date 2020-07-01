@@ -1,6 +1,6 @@
-package ru.otus.lesson1.service;
+package ru.otus.lesson2.service;
 
-import ru.otus.lesson1.dao.PersonDaoI;
+import ru.otus.lesson2.dao.PersonDaoI;
 
 public class PersonService {
     PersonDaoI personDao;

@@ -1,6 +1,6 @@
-package ru.otus.lesson1.service;
+package ru.otus.lesson2.service;
 
-import ru.otus.lesson1.domain.Question;
+import ru.otus.lesson2.domain.Question;
 
 import java.util.HashMap;
 
