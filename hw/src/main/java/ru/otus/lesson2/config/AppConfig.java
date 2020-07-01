@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
-import ru.otus.lesson2.dao.LineDao;
+import ru.otus.lesson2.dao.ReadQuestionDaoCsv;
 import ru.otus.lesson2.service.QuestionAnalyzer;
 import ru.otus.lesson2.service.QuestionService;
 import ru.otus.lesson2.view.Responsable;
@@ -16,9 +16,9 @@ import ru.otus.lesson2.view.View;
 public class AppConfig {
 
     @Bean
-    LineDao lineDao(@Value("${file}") String file){
+    ReadQuestionDaoCsv lineDao(@Value("${file}") String file){
         CsvMapper csvMapper = new CsvMapper();
-        return new LineDao(csvMapper,file);
+        return new ReadQuestionDaoCsv(csvMapper,file);
     }
 
     @Bean
@@ -32,8 +32,8 @@ public class AppConfig {
     }
 
    @Bean
-   QuestionService  questionService(LineDao lineDao, Responsable resp, QuestionAnalyzer questionAnalyzer){
-       return new QuestionService(lineDao,resp,questionAnalyzer);
+   QuestionService  questionService(ReadQuestionDaoCsv readQuestionDaoCsv, Responsable resp, QuestionAnalyzer questionAnalyzer){
+       return new QuestionService(readQuestionDaoCsv,resp,questionAnalyzer);
    }
 
 }

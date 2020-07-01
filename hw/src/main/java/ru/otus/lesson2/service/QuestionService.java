@@ -1,8 +1,7 @@
 package ru.otus.lesson2.service;
 
-import org.springframework.lang.NonNull;
 import ru.otus.lesson2.Main;
-import ru.otus.lesson2.dao.LineDao;
+import ru.otus.lesson2.dao.ReadQuestionDaoCsv;
 import ru.otus.lesson2.domain.Person;
 import ru.otus.lesson2.domain.Question;
 import ru.otus.lesson2.view.Responsable;
@@ -12,22 +11,22 @@ import java.util.HashMap;
 import java.util.HashSet;
 
 public class QuestionService {
-    private LineDao lineDao;
+    private ReadQuestionDaoCsv readQuestionDaoCsv;
     private Responsable responsable;
     private QuestionAnalyzer questionAnalyzer;
     private int count;
 
-    public QuestionService(LineDao lineDao, Responsable responsable, QuestionAnalyzer questionAnalyzer) {
-        this.lineDao = lineDao;
+    public QuestionService(ReadQuestionDaoCsv readQuestionDaoCsv, Responsable responsable, QuestionAnalyzer questionAnalyzer) {
+        this.readQuestionDaoCsv = readQuestionDaoCsv;
         this.responsable = responsable;
         this.questionAnalyzer = questionAnalyzer;
-        this.count=lineDao.getCount();
+        this.count= readQuestionDaoCsv.getCount();
 
     }
 
     public void setCount(Integer count) throws Exception {
         this.count = count;
-        if (count > lineDao.getCount()) throw new Exception("Задайте меньше вопросов, чем в базе");
+        if (count > readQuestionDaoCsv.getCount()) throw new Exception("Задайте меньше вопросов, чем в базе");
     }
 
     /***
@@ -66,7 +65,7 @@ public class QuestionService {
     public HashSet<Question> getQuestions(){
         HashSet<Question> set = new HashSet<>();
         for (int i = 0; i < count; i++) {
-            Question question = lineDao.getQuestion();
+            Question question = readQuestionDaoCsv.getQuestion();
             set.add(question);
         }
         return set;

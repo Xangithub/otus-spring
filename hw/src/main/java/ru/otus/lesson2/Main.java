@@ -10,14 +10,14 @@ import java.util.HashSet;
 
 @ComponentScan
 public class Main {
-    public static boolean lang=true;
-    static  final AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext();
-    static {
-        applicationContext.register(Main.class);
-        applicationContext.refresh();
-    }
+    public static final boolean lang = true;
+
 
     public static void main(String[] args) throws IOException {
+        final AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext();
+        applicationContext.register(Main.class);
+        applicationContext.refresh();
+
 
         QuestionService questionServ = applicationContext.getBean("questionService", QuestionService.class);
 

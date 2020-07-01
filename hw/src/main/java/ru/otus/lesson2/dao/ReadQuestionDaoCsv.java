@@ -13,13 +13,13 @@ import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
 
-public class LineDao {
+public class ReadQuestionDaoCsv {
     private CsvMapper mapper;
     private File csvFile;
     private Set<Question> set = new HashSet<>();
     private Queue<Question> questions = new ArrayDeque<>();
 
-    public LineDao(CsvMapper mapper, String strFile) {
+    public ReadQuestionDaoCsv(CsvMapper mapper, String strFile) {
         this.mapper = mapper;
         final InputStream inputStream = getClass().getResourceAsStream(strFile);
         try(
